@@ -22,6 +22,8 @@
 <script type="text/javascript" src="//stats.slimcd.com/soft/json/slimcd.js"></script>
 <script language="javascript">
 
+	var publicToken = "{ENTER YOUR PUBLIC TOKEN USERNAME HERE}";
+
 	$(document).ready(function() {
 		
 			//select all input elements that have a name attribute
@@ -163,7 +165,7 @@
 			//check that all required fields have a value, that cardNum is valid and not already loaded
 		if(checkSetter("#expirationMonth,#expirationYear,#firstName,#lastName,#cardCVV") && $("#cardNum").hasClass('valid') && $('#cardNum').data('load') != 'yes'){
 			SlimCD.Transact.ProcessTransaction({
-					"username"    : "PVJK4T9P"
+					"username"    : publicToken
 					,"transtype"  : "LOAD"
 					,"cardnumber" : $('#cardNum').val()
 					,"expmonth"   : $('#expirationMonth').val()
@@ -194,7 +196,7 @@
 			//check that cardNum and cardCVV have a value
 		if(checkSetter("#cardCVV,#cardNum")){
 			SlimCD.Transact.GetTemporaryToken({
-					"username"    : "PVJK4T9P"
+					"username"    : publicToken
 					,"cvv2"		  : $('#cardCVV').val()
 					,"cardnumber" : $('#cardNum').val()
 				},
