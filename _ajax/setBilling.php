@@ -3,10 +3,8 @@
 	 
 	$requiredFields = array('firstName',
 							'lastName',
-							'cardCVV'=>'cvvToken',
 							'expirationMonth',
-							'expirationYear',
-							'cardNum'=>'gateID');
+							'expirationYear');
 							
 	function getFinalBilling(){
 		//return formated billing info
@@ -33,6 +31,11 @@
 		foreach($requiredFields as $id => $key){
 			$bads[] = (is_numeric($id)?$key:$id);	
 		}
+		$ok = false;
+	}
+	if(empty($_SESSION['info']['gateID']) && empty($_SESSION['info']['cvvToken'])){ //need either gateID or cvvToken
+		$bads[] = "cardNum";
+		$bads[] = "cardCVV";
 		$ok = false;
 	}
 	if($ok){

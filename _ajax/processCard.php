@@ -3,33 +3,26 @@
 	 
 	 include_once "../_inc/slimcd.php";
 	 
-	 $privateToken = "{ENTER YOUR PRIVATE TOKEN USERNAME HERE}";
-	 // test credentials
-	 $clientid = "1032";
-	 $siteid = "228226448";
-	 $priceid = "74";
-	 
-	 // live credentials
-	 /*
-	 $clientid = "";
-	 $siteid = "";
-	 $priceid = "";
-	 */
-	 
 	//process credit card transaction using slimCD API
-	if(!empty($_SESSION['info']['gateID'])){
+	if(!empty($_SESSION['info']['gateID']) || !empty($_SESSION['info']['cvvToken'])){
 		$SlimCD = new SlimCD();
 		
 		// Create a ProcessTransaction Request class
 		$request = new Transact_ProcessTransactionRequest();
-		$request->username = $privateToken;
+		$request->username = 'R4Q4QPY4';
 		$request->transtype = 'SALE';
-		$request->clientid = $clientid;
-		$request->siteid = $siteid;
-		$request->priceid = $priceid;
+		$request->clientid = '1032';
+		$request->siteid = 228226448;
+		$request->priceid = 74 ;
 		$request->amount = 19.77;
-		$request->gateid = $_SESSION['info']['gateID'];
-		$request->temporary_token = $_SESSION['info']['cvvToken'];
+		if(!empty($_SESSION['info']['gateID']))
+			$request->gateid = $_SESSION['info']['gateID'];
+		if(!empty($_SESSION['info']['cvvToken']))
+			$request->temporary_token = $_SESSION['info']['cvvToken'];
+		$request->expmonth = $_SESSION['info']['expirationMonth'];
+		$request->expyear = $_SESSION['info']['expirationYear'];
+		$request->first_name = $_SESSION['info']['firstName'];
+		$request->last_name = $_SESSION['info']['lastName'];
 		$request->product = 'MyPHP';
 		$request->ver = '1.0';
 		$reply = $SlimCD->Transact_ProcessTransaction($request);

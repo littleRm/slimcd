@@ -21,8 +21,10 @@
 <script type="text/javascript" src="_scripts/jquery.creditCardValidator.js"></script>
 <script type="text/javascript" src="//stats.slimcd.com/soft/json/slimcd.js"></script>
 <script language="javascript">
-
-	var publicToken = "{ENTER YOUR PUBLIC TOKEN USERNAME HERE}";
+	/*
+	SLIMCD CREDIT CARD FORM DEMO USING ProcessTransaction 'LOAD' (NO CVV2 USED)
+	*/
+	var publicToken = "PVJK4T9P";
 
 	$(document).ready(function() {
 		
@@ -48,32 +50,8 @@
 				$(this).removeClass('err');
 				$("[for='"+$(this).attr('id')+"']").removeClass('err');
 			}
-				//if cardNum and cardCVV already loaded then set data as no longer loaded, clear cardCVV value and add error class
-			if($(this).data('load') == 'yes' && $('#cardCVV').data('load') == 'yes'){
-				$(this).data('load','no');
-				$('#cardCVV').data('load','no').val('').addClass('err');
-				$('label[for=cardCVV]').addClass('err');
-			}else { //otherwise call cardNumLoad and cardCVVLoad functions
-				cardCVVLoad();
-				cardNumLoad();
-			}
-		});
-		
-			//bind cardCVVLoad function to cardCVV input on value change
-		$("input#cardCVV").change(function(){
-				//if cardCVV has value, clear error class
-			if($(this).val()!=""){
-				$(this).removeClass('err');
-				$("[for='"+$(this).attr('id')+"']").removeClass('err');
-			}
-				//if cardNum already loaded then set data as no longer loaded, clear cardNum value and add error class
-			if($('input#cardNum').data('load') == 'yes'){
-				$(this).data('load','no');
-				$('input#cardNum').data('load','no').val('').addClass('err');
-				$('label[for=cardNum]').addClass('err');
-			}else{ //otherwise call cardCVVLoad function
-				cardCVVLoad();
-			}
+				//call cardNumLoad and function
+			cardNumLoad();
 		});
 	
 			//set validateCreditCard plugin to cardNum input field
@@ -163,7 +141,7 @@
 		//use ProcessTransaction to LOAD card info to SlimCD
 	function cardNumLoad(){
 			//check that all required fields have a value, that cardNum is valid and not already loaded
-		if(checkSetter("#expirationMonth,#expirationYear,#firstName,#lastName,#cardCVV") && $("#cardNum").hasClass('valid') && $('#cardNum').data('load') != 'yes'){
+		if(checkSetter("#expirationMonth,#expirationYear,#firstName,#lastName") && $("#cardNum").hasClass('valid') && $('#cardNum').data('load') != 'yes'){
 			SlimCD.Transact.ProcessTransaction({
 					"username"    : publicToken
 					,"transtype"  : "LOAD"
@@ -186,29 +164,6 @@
 						ajaxUpdate($('<input/>',{'id':'last4','value':reply.datablock.last4}));
 					} else { //otherwise display error
 						$("#loadMsg").html('There was a problem processing the payment:\r\n' + reply.description);
-					}
-			});
-		}
-	}
-	
-		//use GetTemporaryToken to send CVV2 to SlimCD and return token
-	function cardCVVLoad(){
-			//check that cardNum and cardCVV have a value
-		if(checkSetter("#cardCVV,#cardNum")){
-			SlimCD.Transact.GetTemporaryToken({
-					"username"    : publicToken
-					,"cvv2"		  : $('#cardCVV').val()
-					,"cardnumber" : $('#cardNum').val()
-				},
-				function(reply){
-						//if response is success remove any error classes, mask cardCVV value & send returned token to ajaxUpdate
-					if (reply.response == 'Success') {
-						$('#cardCVV').removeClass('err').val('****');
-						$('#cardCVV').data('load','yes');
-						$('label[for=cardCVV]').removeClass('err');
-						ajaxUpdate($('<input/>',{'id':'cvvToken','value':reply.datablock.temporary_token}));
-					} else {
-						$("#errorMsg").html('There was a problem processing the token:\r\n' + reply.description) ;
 					}
 			});
 		}
@@ -308,12 +263,6 @@
               <label for="cardNum">Credit Card Number</label>
               <div>
                 <input type="text" id="cardNum" class="text_med" />
-              </div>
-            </div>
-            <div class="formField">
-              <label for="cardCVV">CVV Number</label>
-              <div>
-                <input type="text" id="cardCVV" class="text_med" />
               </div>
             </div>
             <div class="formField">
