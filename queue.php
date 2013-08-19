@@ -24,7 +24,7 @@
 	/*
 	SLIMCD CREDIT CARD FORM DEMO USING GetTemporaryToken 
 	*/
-	var publicToken = "PVJK4T9P";
+	var publicToken = "{ENTER YOUR PUBLIC TOKEN USERNAME HERE}";
 
 	$(document).ready(function() {
 		
