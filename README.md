@@ -9,5 +9,5 @@ There are two separate demos:
 * If you do not need CVV2, use load.php which sends the cardholder name, expiration date and card number to slimCD, who returns a gate id which is passed back in the SALE call.
 
 Make sure to set your SlimCD Credentials:
-* Use a Public token allowing LOAD and QUEUE in demo.php
+* Use a Public token allowing LOAD and QUEUE in load.php and queue.php
 * Use a Private token allowing SALE in _ajax/processCard.php
