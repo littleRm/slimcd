@@ -635,7 +635,7 @@ class SlimCD
 
 
 	public $transURL = "https://trans.slimcd.com" ;
-	public $statsURL = "https://stats.slimcd.com" ;
+	public $statsURL = "https://csstats.slimcd.com" ;
 	public $debug = false;
 	private $senddata ;
 	private $recvdata ;

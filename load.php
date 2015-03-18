@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="_css/styles.css" />
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="_scripts/jquery.creditCardValidator.js"></script>
-<script type="text/javascript" src="//stats.slimcd.com/soft/json/slimcd.js"></script>
+<script type="text/javascript" src="//csstats.slimcd.com/soft/json/slimcd.js"></script>
 <script language="javascript">
 	/*
 	SLIMCD CREDIT CARD FORM DEMO USING ProcessTransaction 'LOAD' (NO CVV2 USED)
