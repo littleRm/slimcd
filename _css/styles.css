@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+.billing * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.billing {
+	color:#5B5C5C;
+}
+.billing #holder {
+	display: block;
+	position: relative;
+	width: 1040px;
+	height: auto;
+	min-height: 1000px;
+	margin: 0 auto;
+}
+.billing #checkoutHolder {
+	width: 800px;
+	padding: 20px;
+	margin: 0 auto;;
+}
+.billing form header {
+	margin: 0 0 10px 0;
+}
+.billing form header div {
+	font-size: 90%;
+	color: #999;
+}
+.billing form header h2 {
+	margin: 0 0 5px 0;
+}
+.billing form header h3 {
+	margin:10px 0px 0px;
+	padding:0px;
+}
+.billing div.formField {
+	clear: both;
+	overflow: hidden;
+	padding: 1px;
+	margin: 0 0 10px 0;
+}
+.billing div.formField > fieldset > div > div {
+	margin: 0 0 5px 0;
+}
+.billing div.formField > label, 
+.billing legend {
+	width: 25%;
+	float: left;
+	padding-right: 10px;
+	padding-top: 4px;
+}
+.billing div.formField > div, 
+.billing div.formField > fieldset > div {
+	width: 75%;
+	float: right;
+}
+.billing div.formField > fieldset label {
+	font-size: 90%;
+}
+.billing fieldset {
+	border: 0;
+	padding: 0;
+}
+.billing input[type=text], 
+.billing input[type=email], 
+.billing input[type=url], 
+.billing input[type=password], 
+.billing input[role=textbox], 
+.billing textarea {
+	width: 100%;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	color:#2f3030;
+}
+.billing input[type=text], 
+.billing input[type=email], 
+.billing input[type=url], 
+.billing input[role=textbox], 
+.billing input[type=password] {
+	width: 50%;
+}
+.billing input[type=text]:focus, 
+.billing input[type=email]:focus, 
+.billing input[type=url]:focus, 
+.billing input[type=password]:focus, 
+.billing input[role=textbox]:focus, 
+.billing textarea:focus {
+	outline: 0;
+	border-color: #4697e4;
+}
+.billing select.select_med {
+	width:50%;
+	min-width:200px;
+}
+.billing select.select_med {
+	width:30%;
+	min-width:100px;
+}
+.billing input[type=text].text_med,
+.billing input[type=email].text_med,
+.billing input[type=url].text_med,
+.billing input[type=password].text_med,
+.billing input[role=textbox].text_med {
+	width:50%;
+	min-width:200px;
+}
+.billing input[type=text].text_long,
+.billing input[type=email].text_long,
+.billing input[type=url].text_long,
+.billing input[type=password].text_long,
+.billing input[role=textbox].text_long {
+	width:100%;
+	min-width:400px;
+}
+.billing input[type=text].text_sm,
+.billing input[type=email].text_sm,
+.billing input[type=url].text_sm,
+.billing input[type=password].text_sm,
+.billing input[role=textbox].text_sm {
+	width:10%;
+	min-width:50px;
+}
+
+.billing input[type=text].err,
+.billing input[type=email].err,
+.billing input[type=url].err,
+.billing input[type=password].err,
+.billing input[role=textbox].err,
+.billing select.err {
+	border:1px solid red;
+}
+.billing label.err {
+	font-weight:500;
+	color:red;
+}
+
+.billing .edit {
+	cursor:pointer;
+	font-size:80%;
+	color:#036;
+}
+.billing .edit:hover {
+	text-decoration:underline;
+}
+.hidden {
+	display:none;
+}
+.billing .cards {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	margin-left: 25%;
+	padding-bottom: 10px;
+}
+.billing .cards li {
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+	-ms-transition: all .2s;
+	-o-transition: all .2s;
+	transition: all .2s;
+	background-image: url(../_images/creditCardLogos.png);
+	background-position: 0 0;
+	background-size: 204px;
+	float: left;
+	height: 32px;
+	margin-right: 8px;
+	text-indent: -9999px;
+	width: 51px
+}
+.billing .cards li:last-child {
+	margin-right: 0
+}
+.billing .cards .mastercard {
+	background-position: 52px 0
+}
+.billing .cards .discover {
+	background-position: 153px 0
+}
+.billing .cards .amex {
+	background-position: 102px 0
+}
+.billing .cards .visa.off {
+	background-position: 0 32px
+}
+.billing .cards .mastercard.off {
+	background-position: 52px 32px
+}
+.billing .cards .discover.off {
+	background-position: 153px 32px
+}
+.billing .cards .amex.off {
+	background-position: 102px 32px
+}
+.billing #processCard, 
+.billing #setBilling {
+	float: left;
+	clear: both;
+	cursor: pointer;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: rgba(102,102,102,1);
+	font-weight: 500;
+	padding: 3px 6px;
+	margin-top: 20px;
+}
+.billing #processCard.greyout {
+	color: rgba(204,204,204,1);
+	cursor: default;
+}
+.billing .success, #finalizedBilling {
+	display: none;
+}
+.billing #finalizedBilling {
+	padding: 5px 15px;
+	margin-bottom: 20px;
+}
+.billing #errorMsg,
+.billing #loadMsg {
+	color: red;
+	font-weight: 500;
+	padding-top: 10px;
+	clear: both;
+}
+
+
+
+
+@media (max-width: 600px) {
+	.billing div.formField {
+		margin: 0 0 15px 0;
+	}
+	.billing div.formField > label,  
+	.billing legend {
+		width: 100%;
+		float: none;
+		margin: 0 0 5px 0;
+	}
+	.billing div.formField > div,  
+	.billing div.formField > fieldset > div {
+		width: 100%;
+		float: none;
+	}
+	.billing input[type=text],  
+	.billing input[type=email],  
+	.billing input[type=url],  
+	.billing input[type=password], 
+	.billing input[role=textbox],  
+	.billing textarea,  
+	.billing select {
+		width: 100%;
+	}
+}
+@media (min-width: 1200px) {
+	.billing div.formField > label,  
+	.billing legend {
+		/*text-align: right;*/
+	}
+}
